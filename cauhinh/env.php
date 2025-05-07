@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "quanlylinhkien";
+$dbname = "quanlylinkkien";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Kiểm tra kết nối
