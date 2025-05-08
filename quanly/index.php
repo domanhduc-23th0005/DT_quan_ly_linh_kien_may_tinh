@@ -427,6 +427,7 @@ if (isset($_GET['quanly']) && isset($_GET['hienthi']))
     if ($_GET['hienthi'] == 'them') {
 
     } else if ($_GET['hienthi'] == 'sua') {
+      
 
     } else if ($_GET['hienthi'] == 'xoa') {
 
@@ -435,13 +436,14 @@ if (isset($_GET['quanly']) && isset($_GET['hienthi']))
     }
   } else if ($_GET['quanly'] == 'thuonghieu') {
     if ($_GET['hienthi'] == 'them') {
-
+      include('hienthi/thuonghieu/them-thuonghieu.php');
     } else if ($_GET['hienthi'] == 'sua') {
-
+      include('hienthi/thuonghieu/sua-thuonghieu.php');
     } else if ($_GET['hienthi'] == 'xoa') {
-
+      include('hienthi/thuonghieu/xoa-thuonghieu.php');
     } else {
       include('hienthi/thuonghieu/danhsach-thuonghieu.php');
+
     }
   } else if ($_GET['quanly'] == 'mathang') {
     if ($_GET['hienthi'] == 'them') {
