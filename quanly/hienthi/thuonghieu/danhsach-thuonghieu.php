@@ -1,3 +1,10 @@
+<?php
+require('../cauhinh/env.php');
+
+// Lấy danh sách mặt hàng
+$sql = "SELECT * FROM `thuonghieu`";
+$result = mysqli_query($conn, $sql);
+?>
 <div class="container">
 
   <div class="page-inner">
@@ -14,7 +21,7 @@
           <div class="card-header">
             <div class="d-flex align-items-center">
               <h4 class="card-title">Thêm thương hiệu</h4>
-              <button class="btn btn-primary btn-round ms-auto"><i class="fa fa-plus"></i> Thêm thương hiệu</button>
+              <a href="index.php?quanly=thuonghieu&hienthi=them" class="btn btn-primary btn-round ms-auto"><i class="fa fa-plus"></i> Thêm Thương Hiệu</a>
             </div>
           </div>
 
@@ -36,17 +43,22 @@
                   </tr>
                 </tfoot>
                 <tbody>
+                <?php
+                  if (mysqli_num_rows($result) != 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                      ?>
                   <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>System Architect</td>
+                    <td><?php echo $row['MATHUONGHIEU'] ?></td>
+                    <td><?php echo $row['TENTHUONGHIEU'] ?></td>
                     <td>
                       <div class="form-button-action">
-                        <button type="button" title="Sửa" class="btn btn-link btn-primary btn-lg"><i class="fa fa-edit"></i></button>
-                        <button type="button" title="Xoá" class="btn btn-link btn-danger"><i class="fa fa-times"></i></button>
+                      <a href="index.php?quanly=thuonghieu&hienthi=sua&id=<?php echo $row['MATHUONGHIEU'] ?>" type="button" title="Sửa" class="btn btn-link btn-primary btn-lg"><i class="fa fa-edit"></i></a>
+                      <a href="index.php?quanly=thuonghieu&hienthi=xoa&id=<?php echo $row['MATHUONGHIEU'] ?>"  type="button" title="Xoá" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
                       </div>
                     </td>
+
                   </tr>
+                  <?php }}?>
                 </tbody>
               </table>
             </div>
@@ -59,7 +71,10 @@
     </div>
 
   </div>
-
+  <?php
+// Đóng kết nối
+$conn->close();
+?>
 </div>
 
 <!--   Core JS Files   -->
