@@ -425,12 +425,11 @@ if (isset($_GET['quanly']) && isset($_GET['hienthi']))
 {
   if ($_GET['quanly'] == 'loaihang') {
     if ($_GET['hienthi'] == 'them') {
-
+      include('hienthi/loaihang/them-loaihang.php');
     } else if ($_GET['hienthi'] == 'sua') {
-      
-
+      include('hienthi/loaihang/sua-loaihang.php');
     } else if ($_GET['hienthi'] == 'xoa') {
-
+      include('hienthi/loaihang/xoa-loaihang.php');
     } else {
       include('hienthi/loaihang/danhsach-loaihang.php');
     }
