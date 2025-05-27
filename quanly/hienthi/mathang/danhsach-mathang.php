@@ -68,7 +68,7 @@ $result = mysqli_query($conn, $sql);
                         <td><?php echo $row['TENLOAIHANG'] ?></td>
                         <td><?php echo $row['TENTHUONGHIEU'] ?></td>
                         <td><?php echo $row['DONVITINH'] ?></td>
-                        <td><?php echo $row['GIABAN'] ?></td>
+                        <td><?php echo number_format($row['GIABAN'], 0, ',', '.') ?></td>
                         <td>
                           <?php 
                           if (!empty($row['ANHMINHHOA'])) {

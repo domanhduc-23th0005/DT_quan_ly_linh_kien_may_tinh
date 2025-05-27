@@ -121,6 +121,30 @@ session_start();
               </a>
             </li>
 
+            <li class="nav-item">
+              <a href="index.php?quanly=donhang&hienthi=danhsach">
+                <i class="fas fa-receipt"></i>
+                <p>Đơn hàng</p>
+                <span class="caret"></span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="index.php?quanly=khachhang&hienthi=danhsach">
+                <i class="fas fa-user-friends"></i>
+                <p>Khách Hàng</p>
+                <span class="caret"></span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="index.php?quanly=baocao&hienthi=tonghop">
+                <i class="fas fa-chart-pie"></i>
+                <p>Báo cáo - Thống kê</p>
+                <span class="caret"></span>
+              </a>
+            </li>
+
           </ul>
         </div>
       </div>
@@ -426,7 +450,7 @@ if (isset($_GET['quanly']) && isset($_GET['hienthi']))
   if ($_GET['quanly'] == 'loaihang') {
     if ($_GET['hienthi'] == 'them') {
       include('hienthi/loaihang/them-loaihang.php');
-    } else if ($_GET['hienthi'] == 'sua') {
+    } else if ($_GET['hienthi'] == 'sua') { 
       include('hienthi/loaihang/sua-loaihang.php');
     } else if ($_GET['hienthi'] == 'xoa') {
       include('hienthi/loaihang/xoa-loaihang.php');
@@ -442,7 +466,6 @@ if (isset($_GET['quanly']) && isset($_GET['hienthi']))
       include('hienthi/thuonghieu/xoa-thuonghieu.php');
     } else {
       include('hienthi/thuonghieu/danhsach-thuonghieu.php');
-
     }
   } else if ($_GET['quanly'] == 'mathang') {
     if ($_GET['hienthi'] == 'them') {
@@ -453,6 +476,34 @@ if (isset($_GET['quanly']) && isset($_GET['hienthi']))
       include('hienthi/mathang/xoa-mathang.php');
     } else {
       include('hienthi/mathang/danhsach-mathang.php');
+    }
+  } else if ($_GET['quanly'] == 'donhang') {
+    if ($_GET['hienthi'] == 'chitiet') {
+      include('hienthi/donhang/chitiet-donhang.php');
+    } else if ($_GET['hienthi'] == 'xoa') {
+      include('hienthi/donhang/xoa-donhang.php');
+    } else {
+      include('hienthi/donhang/danhsach-donhang.php');
+    }
+  } else if ($_GET['quanly'] == 'khachhang') {
+    if ($_GET['hienthi'] == 'them') {
+      include('hienthi/khachhang/them-khachhang.php');
+    } else if ($_GET['hienthi'] == 'sua') {
+      include('hienthi/khachhang/sua-khachhang.php');
+    } else if ($_GET['hienthi'] == 'xoa') {
+      include('hienthi/khachhang/xoa-khachhang.php');
+    } else {
+      include('hienthi/khachhang/danhsach-khachhang.php');
+    }
+  } else if ($_GET['quanly'] == 'baocao') {
+    if ($_GET['hienthi'] == 'doanhthu') {
+      include('hienthi/baocao/baocao-doanhthu.php');
+    } else if ($_GET['hienthi'] == 'mathang') {
+      include('hienthi/baocao/baocao-mathang.php');
+    } else if ($_GET['hienthi'] == 'khachhang') {
+      include('hienthi/baocao/baocao-khachhang.php');
+    } else{
+      include('hienthi/baocao/danhsach-baocao.php');
     }
   }
 } else {
