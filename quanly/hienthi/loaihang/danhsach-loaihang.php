@@ -1,9 +1,16 @@
+<?php
+require('../cauhinh/env.php');
+
+// Lấy danh sách mặt hàng
+$sql = "SELECT * FROM `loaihang`";
+$result = mysqli_query($conn, $sql);
+?>
 <div class="container">
 
   <div class="page-inner">
 
     <div class="page-header">
-      <h3 class="fw-bold mb-3">Danh Sách Loại Hàng</h3>
+      <h3 class="fw-bold mb-3">Danh Sách Loại hàng</h3>
     </div>
 
     <div class="row">
@@ -13,8 +20,8 @@
         <div class="card">
           <div class="card-header">
             <div class="d-flex align-items-center">
-              <h4 class="card-title">Thêm loại hàng</h4>
-              <a href="index.php?quanly=loaihang&hienthi=them" class="btn btn-primary btn-round ms-auto"><i class="fa fa-plus"></i> Thêm loại hàng</a>
+              <h4 class="card-title">Thêm Loại hàng</h4>
+              <a href="index.php?quanly=loaihang&hienthi=them" class="btn btn-primary btn-round ms-auto"><i class="fa fa-plus"></i> Thêm Loại Hàng</a>
             </div>
           </div>
 
@@ -23,29 +30,35 @@
               <table id="add-row" class="display table table-striped table-hover">
                 <thead>
                   <tr>
-                    <th>MÃ LOẠI HÀNG</th>
-                    <th>TÊN LOẠI HÀNG</th>
+                    <th>MÃ LOAIHANG</th>
+                    <th>TÊN LOAIHANG</th>
                     <th style="width: 10%">CHỨC NĂNG</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>MÃ LOẠI HÀNG</th>
-                    <th>TÊN LOẠI HÀNG</th>
+                    <th>MÃ LOAIHANG</th>
+                    <th>TÊN LOAIHANG</th>
                     <th>CHỨC NĂNG</th>
                   </tr>
                 </tfoot>
                 <tbody>
+                <?php
+                  if (mysqli_num_rows($result) != 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                      ?>
                   <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
+                    <td><?php echo $row['MALOAIHANG'] ?></td>
+                    <td><?php echo $row['TENLOAIHANG'] ?></td>
                     <td>
                       <div class="form-button-action">
-                        <button type="button" title="Sửa" class="btn btn-link btn-primary btn-lg"><i class="fa fa-edit"></i></button>
-                        <button type="button" title="Xoá" class="btn btn-link btn-danger"><i class="fa fa-times"></i></button>
+                      <a href="index.php?quanly=loaihang&hienthi=sua&id=<?php echo $row['MALOAIHANG'] ?>" type="button" title="Sửa" class="btn btn-link btn-primary btn-lg"><i class="fa fa-edit"></i></a>
+                      <a href="index.php?quanly=loaihang&hienthi=xoa&id=<?php echo $row['MALOAIHANG'] ?>"  type="button" title="Xoá" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
                       </div>
                     </td>
+
                   </tr>
+                  <?php }}?>
                 </tbody>
               </table>
             </div>
@@ -58,7 +71,10 @@
     </div>
 
   </div>
-
+  <?php
+// Đóng kết nối
+$conn->close();
+?>
 </div>
 
 <!--   Core JS Files   -->
