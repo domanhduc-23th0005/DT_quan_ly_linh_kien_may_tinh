@@ -96,6 +96,7 @@ foreach ($cart as $item) {
 
 // Xoá giỏ hàng sau khi đặt
 unset($_SESSION['cart']);
+unset($_SESSION['user_id']);
 
 header("Location: ../../index.php?hienthi=thongtindathang&success");
 exit;
