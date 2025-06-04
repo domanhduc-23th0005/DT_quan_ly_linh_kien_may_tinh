@@ -2,7 +2,7 @@
 require_once('../cauhinh/env.php');
 
 // Lấy danh sách đơn hàng
-$sql = "SELECT donhang.*, khachhang.HOKHACHHANG, khachhang.TENKHACHHANG 
+$sql = "SELECT donhang.*, khachhang.* 
 FROM donhang 
 JOIN khachhang ON donhang.MAKHACHHANG = khachhang.MAKHACHHANG";
 $result = mysqli_query($conn, $sql);
@@ -29,6 +29,7 @@ $result = mysqli_query($conn, $sql);
                                 <tr>
                                     <th style="width: 11%">Mã đơn hàng</th>
                                     <th>TÊN KHÁCH HÀNG</th>
+                                    <th>EMAIL / SĐT</th>
                                     <th style="width: 20%">Ngày bán hàng</th>
                                     <th style="width: 10%">TRẠNG THÁI</th>
                                     <th style="width: 7%">CHI TIẾT</th>
@@ -39,6 +40,7 @@ $result = mysqli_query($conn, $sql);
                                 <tr>
                                     <th>MÃ ĐƠN HÀNG</th>
                                     <th>TÊN KHÁCH HÀNG</th>
+                                    <th>EMAIL / SĐT</th>
                                     <th>Ngày bán hàng</th>
                                     <th>TRẠNG THÁI</th>
                                     <th>CHI TIẾT</th>
@@ -53,6 +55,7 @@ $result = mysqli_query($conn, $sql);
                                         <tr>
                                             <td><?php echo $row['MADONHANG'] ?></td>
                                             <td><?php echo $row['HOKHACHHANG'] . ' ' . $row['TENKHACHHANG']; ?></td>
+                                            <td><?php echo $row['EMAIL'] . ' / ' . $row['DIENTHOAI']; ?></td>
                                             <td><?php echo $row['NGAYBANHANG'] ?></td>
                                             <td>
                                                 <?php
