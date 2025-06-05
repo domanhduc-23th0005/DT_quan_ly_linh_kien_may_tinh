@@ -10,6 +10,7 @@ $sql = "
   FROM ctdonhang ct
   JOIN donhang d ON ct.MADONHANG = d.MADONHANG
   JOIN mathang h ON ct.MAHANG = h.MAHANG
+  WHERE d.TRANGTHAI <> 4
   GROUP BY ct.MAHANG, h.TENHANG
   ORDER BY doanhthu DESC
 ";

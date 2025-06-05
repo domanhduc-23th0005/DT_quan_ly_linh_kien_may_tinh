@@ -3,7 +3,7 @@ require('../../../cauhinh/env.php');
 
 $tu_ngay = $_GET['tu_ngay'] ?? '';
 $den_ngay = $_GET['den_ngay'] ?? '';
-$where_ngay = ($tu_ngay && $den_ngay) ? "WHERE DATE(d.NGAYBANHANG) BETWEEN ? AND ?" : "";
+$where_ngay = ($tu_ngay && $den_ngay) ? "WHERE DATE(d.NGAYBANHANG) BETWEEN ? AND ? AND d.TRANGTHAI <> 4" : "";
 
 // Doanh thu từng ngày
 $sql = "
@@ -13,7 +13,7 @@ $sql = "
   JOIN ctdonhang ct ON d.MADONHANG = ct.MADONHANG
   $where_ngay
   GROUP BY ngay
-  ORDER BY ngay DESC
+  ORDER BY ngay ASC
 ";
 $stmt = $conn->prepare($sql);
 if ($where_ngay) $stmt->bind_param("ss", $tu_ngay, $den_ngay);

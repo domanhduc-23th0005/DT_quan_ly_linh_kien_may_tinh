@@ -6,10 +6,12 @@ $sql = "
   SELECT 
     k.MAKHACHHANG,
     k.TENKHACHHANG,
+    k.EMAIL,
     SUM(ct.GIABAN * ct.SOLUONG * (1 - ct.MUCGIAMGIA/100)) AS doanhthu
   FROM donhang d
   JOIN khachhang k ON d.MAKHACHHANG = k.MAKHACHHANG
   JOIN ctdonhang ct ON d.MADONHANG = ct.MADONHANG
+  WHERE d.TRANGTHAI <> 4
   GROUP BY k.MAKHACHHANG, k.TENKHACHHANG
   ORDER BY doanhthu DESC
 ";
@@ -51,10 +53,10 @@ $conn->close();
   </form>
 <button onclick="history.back()" class="btn btn-secondary mb-3">🔙 Quay lại</button>
   <?php if ($max): ?>
-    <div class="alert alert-success">🔝 <strong>Khách hàng mua nhiều nhất:</strong> <?= $max['TENKHACHHANG'] ?> – <?= number_format($max['doanhthu'], 0, ',', '.') ?> VNĐ</div>
+    <div class="alert alert-success">🔝 <strong>Khách hàng mua nhiều nhất:</strong> <?= $max['EMAIL'] ?> – <?= number_format($max['doanhthu'], 0, ',', '.') ?> VNĐ</div>
   <?php endif; ?>
   <?php if ($min): ?>
-    <div class="alert alert-warning">🔻 <strong>Ít nhất:</strong> <?= $min['TENKHACHHANG'] ?> – <?= number_format($min['doanhthu'], 0, ',', '.') ?> VNĐ</div>
+    <div class="alert alert-warning">🔻 <strong>Ít nhất:</strong> <?= $min['EMAIL'] ?> – <?= number_format($min['doanhthu'], 0, ',', '.') ?> VNĐ</div>
   <?php endif; ?>
 
   <canvas id="bieudoKH" height="150"></canvas>
@@ -65,7 +67,7 @@ const ctx = document.getElementById('bieudoKH').getContext('2d');
 new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: <?= json_encode(array_column($data, 'TENKHACHHANG')) ?>,
+    labels: <?= json_encode(array_column($data, 'EMAIL')) ?>,
     datasets: [{
       label: 'Doanh thu (VNĐ)',
       data: <?= json_encode(array_column($data, 'doanhthu')) ?>,

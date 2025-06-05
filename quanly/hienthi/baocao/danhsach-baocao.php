@@ -30,7 +30,7 @@
   </div>
 
   <!-- Biểu đồ tổng hợp mặt hàng -->
-  <div class="mt-5">
+  <div class="mt-5" style="display: none;">
     <h4 class="text-secondary mb-4">📦 Biểu Đồ Doanh Thu Theo Mặt Hàng</h4>
     <canvas id="chartDoanhThuMH" height="120"></canvas>
   </div>

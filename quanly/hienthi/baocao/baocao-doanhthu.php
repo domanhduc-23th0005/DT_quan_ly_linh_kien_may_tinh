@@ -8,6 +8,7 @@ $sql_all = "
     SUM(ct.GIABAN * ct.SOLUONG * (1 - ct.MUCGIAMGIA/100)) AS doanhthu
   FROM donhang d
   JOIN ctdonhang ct ON d.MADONHANG = ct.MADONHANG
+  WHERE d.TRANGTHAI <> 4
   GROUP BY ngay
   ORDER BY ngay ASC
 ";
@@ -26,6 +27,7 @@ $sql_max = "
          SUM(ct.GIABAN * ct.SOLUONG * (1 - ct.MUCGIAMGIA/100)) AS doanhthu
   FROM donhang d
   JOIN ctdonhang ct ON d.MADONHANG = ct.MADONHANG
+  WHERE d.TRANGTHAI <> 4
   GROUP BY ngay
   ORDER BY doanhthu DESC
   LIMIT 1
@@ -39,6 +41,7 @@ $sql_min = "
          SUM(ct.GIABAN * ct.SOLUONG * (1 - ct.MUCGIAMGIA/100)) AS doanhthu
   FROM donhang d
   JOIN ctdonhang ct ON d.MADONHANG = ct.MADONHANG
+  WHERE d.TRANGTHAI <> 4
   GROUP BY ngay
   ORDER BY doanhthu ASC
   LIMIT 1

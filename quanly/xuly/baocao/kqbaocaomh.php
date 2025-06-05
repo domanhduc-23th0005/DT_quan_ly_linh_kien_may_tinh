@@ -3,7 +3,7 @@ require('../../../cauhinh/env.php');
 
 $tu_ngay = $_GET['tu_ngay'] ?? '';
 $den_ngay = $_GET['den_ngay'] ?? '';
-$where = ($tu_ngay && $den_ngay) ? "WHERE DATE(d.NGAYBANHANG) BETWEEN ? AND ?" : "";
+$where = ($tu_ngay && $den_ngay) ? "WHERE DATE(d.NGAYBANHANG) BETWEEN ? AND ? AND d.TRANGTHAI <> 4" : "";
 
 $sql = "
   SELECT 
