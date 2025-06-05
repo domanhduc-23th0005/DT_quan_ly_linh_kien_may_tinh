@@ -15,7 +15,7 @@ $sql_doanhso = "
 SELECT SUM(ct.GIABAN * ct.SOLUONG * (1 - ct.MUCGIAMGIA/100)) AS tong_doanh_so
 FROM DONHANG d
 JOIN ctDONHANG ct ON d.MADONHANG = ct.MADONHANG
-WHERE d.TRANGTHAI = 3
+WHERE d.TRANGTHAI <> 4
 ";
 $result_doanhso = mysqli_query($conn, $sql_doanhso);
 $row_doanhso = mysqli_fetch_assoc($result_doanhso);
