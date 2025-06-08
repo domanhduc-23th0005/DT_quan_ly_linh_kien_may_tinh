@@ -142,7 +142,7 @@ include '../../xuly/donhang/danhsach-donhang.php';
                     <td><?= $trangthai ?></td>
                     <td class="action-btns">
                         <a class="btn" href="chitiet-donhang.php?madonhang=<?= urlencode($row['MADONHANG']) ?>">Chi tiết</a>
-                        <a class="btn-warning" href="sua-donhang.php?madonhang=<?= urlencode($row['MADONHANG']) ?>">Sửa</a>
+                        <a class="btn-warning" href="sua-donhang.php?madonhang=<?= urlencode($row['MADONHANG']) ?>" style="display: none;">Sửa</a>
                         <?php
                         if ($trangthai == "Chờ xử lý") {
                             ?>
