@@ -21,7 +21,6 @@ unset($_SESSION["errors"], $_SESSION["old_data"]); // Xóa lỗi sau khi hiển 
                 <div class="col-md-3 col-lg-4">
                 </div>
                 <div class="col-md-6 col-lg-4 mb-3">
-                    <label for="lienhe" class="form-label">Email/Số diện thoại:</label>
                     <?php
                     if (!empty($errors)) { 
                         ?>
@@ -35,7 +34,11 @@ unset($_SESSION["errors"], $_SESSION["old_data"]); // Xóa lỗi sau khi hiển 
                         <?php
                     }
                     ?>
+                    <label for="lienhe" class="form-label">Email/Số diện thoại:</label>
                     <input type="text" class="form-control" placeholder="Email hoặc Số điện thoại" name="lienhe" required>
+                    <br>
+                    <label for="diachi" class="form-label">Địa chỉ:</label>
+                    <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="diachi" required>
                     <br>
                     <button type="submit" class="btn btn-success">Xác nhận</button>
                 </div>

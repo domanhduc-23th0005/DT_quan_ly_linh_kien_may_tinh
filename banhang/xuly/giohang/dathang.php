@@ -25,6 +25,7 @@ if (!isset($_SESSION['user_id'])) {
     // Nếu chưa đăng nhập, hiển thị form nhập email/SDT
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $lienhe = trim($_POST['lienhe']);
+        $diachi = trim($_POST['diachi']);
         $errors = [];
 
         // Kiểm tra liên hệ
@@ -49,7 +50,7 @@ if (!isset($_SESSION['user_id'])) {
                 $_SESSION['user_id'] = $row['MAKHACHHANG'];
             } else {
                 // Thêm mới khách hàng nếu chưa có
-                $sql_insert = "INSERT INTO khachhang (HOKHACHHANG, TENKHACHHANG, GIOITINH, DIACHI, EMAIL, DIENTHOAI, MATKHAU) VALUES ('n/a', 'n/a', 'n/a', 'n/a', '$lienhe', '$lienhe', 'n/a')";
+                $sql_insert = "INSERT INTO khachhang (HOKHACHHANG, TENKHACHHANG, GIOITINH, DIACHI, EMAIL, DIENTHOAI, MATKHAU) VALUES ('n/a', 'n/a', 'n/a', '$diachi', '$lienhe', '$lienhe', 'n/a')";
                 mysqli_query($conn, $sql_insert);
                 $_SESSION['user_id'] = mysqli_insert_id($conn);
             }
